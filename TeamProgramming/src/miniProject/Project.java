@@ -37,12 +37,16 @@ public class Project {
 		return 0;
 	}
 
-	public int earnedValue() {
+	public double earnedValue(int current_week) {
+		double earned_value=0;
+		double completed_work=duration/current_week;
+		earned_value=this.budget*completed_work;
+		return earned_value;
+		
 		/*
-		 * this method should return the earned value the earned value = % of completed
+		 * this method should return the earned value = % of completed
 		 * work / budget at completion (BAC)
 		 */
-		return 0;
 	}
 	
 	public String scheduleActivity() {
@@ -87,3 +91,4 @@ public class Project {
 	}
 
 }
+
