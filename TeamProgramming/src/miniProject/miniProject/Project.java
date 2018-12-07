@@ -20,12 +20,16 @@ public class Project {
 		this.time = time;
 	}
 
-	public int costVariance() {
+	public double costVariance(double earned_Value) {
+		double cost_Variance = 0;
+		cost_Variance = earned_Value - this.budget;
+		return cost_Variance;
+
 		/*
 		 * this method should return the cost variance the cost variance = budgeted cost
 		 * of the work - actual cost of work
 		 */
-		return 0;
+	
 	}
 
 	public int scheduleVariance() {
