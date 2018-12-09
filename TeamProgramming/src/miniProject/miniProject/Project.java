@@ -1,5 +1,3 @@
-package miniProject;
-
 public class Project {
 
 	private String ID;

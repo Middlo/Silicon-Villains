@@ -1,5 +1,3 @@
-package miniProject;
-
 import java.util.ArrayList;
 
 public class Person {
@@ -82,7 +80,7 @@ public class Person {
 																							// message
 		return null;
 	}
-	public void removeEmployee(String ID) {
+	public void removePerson(String ID) {
 
 		Person person = retrievePerson(ID);// we get employee with this ID
 		if (person != null)

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="miniProject/" kind="src" path="src/miniProject"/>
+	<classpathentry kind="src" path="src/miniProject/miniProject"/>
+	<classpathentry kind="lib" path="src/miniProject/miniProject/json-simple-1.1.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
