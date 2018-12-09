@@ -20,9 +20,9 @@ public class Project {
 		this.time = time;
 	}
 
-	public double costVariance(double earned_Value) {
-		double cost_Variance = 0;
-		cost_Variance = earned_Value - this.budget;
+	public double costVariance (int current_week) {
+		double earned_Value = earnedValue(current_week);
+		double cost_Variance = earned_Value - this.budget;
 		return cost_Variance;
 
 		/*
