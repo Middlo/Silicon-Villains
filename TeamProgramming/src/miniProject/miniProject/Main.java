@@ -114,10 +114,11 @@ public class Main{
 	// Should be able to retrieve each project done based on id
 	// Stores them into a new ArrayList
 	// Displays them by printing out (??? toString ???)
+
 	public String productsParticipated(String ID) {
 		// this method should return each members work products participated on the
 		// project.
-		ArrayList<String> ParticipationList = new ArrayList<>();
+		ArrayList<Project> ParticipationList = new ArrayList<>();
 		ParticipationList.add(retrieveProject(ID));
 
 		System.out.println(ParticipationList);
