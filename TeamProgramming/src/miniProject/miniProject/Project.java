@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Project {
 
 	private String ID;
@@ -6,7 +8,8 @@ public class Project {
 	private int duration;
 	private int budget;
 	private int RoI;
-	private int time; // should be array with each member and their time
+	private ArrayList<PersonTime> times; // should be array with each member and their time
+	//private ArrayList<Task> tasks; //TODO
 
 	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
 		this.ID = ID;
@@ -15,7 +18,7 @@ public class Project {
 		this.duration = duration;
 		this.budget = budget;
 		this.RoI = RoI;
-		this.time = time;
+		this.times = new ArrayList<>();
 	}
 
 	public double costVariance (int current_week) {
@@ -62,6 +65,18 @@ public class Project {
 	
 	//Risk Matrix method; think about this!!!
 	
+	public boolean updateTime(String personID, int time) {
+		//The method goes through each couple of PersonID and time spent in the project
+		//and if the ID is found then the time is updated and the method returns true
+		boolean found = false;
+		for(PersonTime couple : this.times) {
+			if(personID.equals(couple.getID())) {
+				couple.setTime(time);
+				found = true;
+			}
+		}
+		return found;
+	}
 	
 
 	public String getID() {
@@ -88,10 +103,6 @@ public class Project {
 		return this.RoI;
 	}
 
-	public int getTime() {
-		return this.time;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -110,10 +121,6 @@ public class Project {
 
 	public void setRoI(int roI) {
 		RoI = roI;
-	}
-
-	public void setTime(int time) {
-		this.time = time;
 	}
 }
 

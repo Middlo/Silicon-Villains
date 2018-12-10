@@ -168,12 +168,11 @@ public class Main{
 	}
 	
 	//updateProjectTime is Done
-	public boolean updateProjectTime(String ID,int newTime) {
+	public boolean updateProjectTime(String ID, String personID,int newTime) {
 		//Returns true if the time is successfully edited, returns false if not
 		Project foundProject = retrieveProject(ID);
 		if(foundProject != null) {
-			foundProject.setTime(newTime);
-			return true;
+			return foundProject.updateTime(personID, newTime);
 		}else {
 			return false;
 		}

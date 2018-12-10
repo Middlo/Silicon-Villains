@@ -1,11 +1,8 @@
-import java.util.ArrayList;
-
 public class Person {
+	
 	private String ID;
 	private String name;
 	private int age;
-	ArrayList<Project> A;
-	ArrayList<Person> people;
 	private final int Salary = 15000;// add fixed salary
 
 	public Person(String ID, String name, int age) {
