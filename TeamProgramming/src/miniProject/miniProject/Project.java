@@ -80,7 +80,7 @@ public class Project {
 		return this.duration;
 	}
 
-	public int getbudget() {
+	public int getBudget() {
 		return this.budget;
 	}
 

@@ -14,6 +14,64 @@ public class Main{
 		//program.run();
 	}
 	
+	public boolean createPerson(String ID, String name, int age) {
+		Person person = new Person(ID, name, age);
+		
+		if(retrievePerson(ID)==null) {
+			this.people.add(person);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean removePerson(String ID) {
+		//Deletes a project with specified ID if it is present in the ArrayList
+		Person person = retrievePerson(ID);// we get employee with this ID
+			
+		if (person != null) {
+			this.people.remove(person);// we remove that employee if he/she exists
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public Person retrievePerson(String ID) {
+		//Retrieves the Project with id specified if it is present in the arraylist
+		//otherwise returns null if it is not present
+		for (int i = 0; i < this.people.size(); i++) { 
+			if (people.get(i) != null && people.get(i).getID().equals(ID)) { 
+				return people.get(i); 
+			}
+		}
+		return null;
+	}
+	
+	//updatePersonName is Done
+	public boolean updatePersonName(String ID,String newName) {
+		//Returns true if the name is successfully edited, returns false if not
+		Person foundPerson= retrievePerson(ID);
+		if(foundPerson != null) {
+			foundPerson.setName(newName);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//updatePersonAge is Done
+		public boolean updatePersonAge(String ID,int newAge) {
+			//Returns true if the name is successfully edited, returns false if not
+			Person foundPerson= retrievePerson(ID);
+			if(foundPerson != null) {
+				foundPerson.setAge(newAge);
+				return true;
+			}else {
+				return false;
+			}
+		}
+	
 	//createProject is Done
 	public void createProject(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
 		Project project = new Project(ID, name, desc, duration, budget, RoI, time);
@@ -119,9 +177,5 @@ public class Main{
 		}else {
 			return false;
 		}
-	}
-	
-	public int getTimeSpent(String ID){
-		return 0;
 	}
 }
