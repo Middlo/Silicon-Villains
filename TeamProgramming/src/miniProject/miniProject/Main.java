@@ -101,9 +101,26 @@ public class Main{
 		//otherwise returns null if it is not present
 		for (int i = 0; i < this.projects.size(); i++) { 
 			if (projects.get(i) != null && projects.get(i).getID().equals(ID)) { 
-				return projects.get(i); 
+				return projects.get(i);
 			}
 		}
+		return null;
+	}
+
+	// Shifted from Person.java to here
+	// More appropriate, as Person.java is for creating a template of person
+	// When you create a person, you would not know the projects he/she participated in
+	// Same goes for the Project.java file, you create only a project template
+	// Should be able to retrieve each project done based on id
+	// Stores them into a new ArrayList
+	// Displays them by printing out (??? toString ???)
+	public String productsParticipated(String ID) {
+		// this method should return each members work products participated on the
+		// project.
+		ArrayList<String> ParticipationList = new ArrayList<>();
+		ParticipationList.add(retrieveProject(ID));
+
+		System.out.println(ParticipationList);
 		return null;
 	}
 	

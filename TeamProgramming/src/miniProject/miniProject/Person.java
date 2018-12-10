@@ -22,12 +22,6 @@ public class Person {
 		// project.
 		return 0;
 	}
-
-	public String productsParticipated() {
-		// this method should return each members work products participated on the
-		// project.
-		return null;
-	}
 	
 	public String getID() {
 		return this.ID;
