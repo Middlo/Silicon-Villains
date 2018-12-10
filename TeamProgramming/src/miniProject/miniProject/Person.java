@@ -24,7 +24,7 @@ public class Person {
 	}
 
 	public String productsParticipated() {
-		// this method should return each members individual time contributed on the
+		// this method should return each members work products participated on the
 		// project.
 		return null;
 	}
