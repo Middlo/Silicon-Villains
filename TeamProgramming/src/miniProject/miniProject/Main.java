@@ -11,7 +11,7 @@ public class Main{
 	
 	public static void main (String[]args) {
 		Main program = new Main();
-		program.run();
+		//program.run();
 	}
 	
 	//createProject is Done
@@ -49,7 +49,79 @@ public class Main{
 		return null;
 	}
 	
-	int getTimeSpent(String memberId){
-		
+	//updateProjectName is Done
+	public boolean updateProjectName(String ID,String newName) {
+		//Returns true if the name is successfully edited, returns false if not
+		Project foundProject = retrieveProject(ID);
+		if(foundProject != null) {
+			foundProject.setName(newName);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//updateProjectDesc is Done
+	public boolean updateProjectDesc(String ID,String newDesc) {
+		//Returns true if the description is successfully edited, returns false if not
+		Project foundProject = retrieveProject(ID);
+		if(foundProject != null) {
+			foundProject.setDesc(newDesc);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//updateProjectDuration is Done
+	public boolean updateProjectDuration(String ID,int newDuration) {
+		//Returns true if the duration is successfully edited, returns false if not
+		Project foundProject = retrieveProject(ID);
+		if(foundProject != null) {
+			foundProject.setDuration(newDuration);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//updateProjectBudget is Done
+	public boolean updateProjectBudget(String ID,int newBudget) {
+		//Returns true if the budget is successfully edited, returns false if not
+		Project foundProject = retrieveProject(ID);
+		if(foundProject != null) {
+			foundProject.setBudget(newBudget);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//updateProjectRoI is Done
+	public boolean updateProjectRoI(String ID,int newRoI) {
+		//Returns true if the RoI is successfully edited, returns false if not
+		Project foundProject = retrieveProject(ID);
+		if(foundProject != null) {
+			foundProject.setRoI(newRoI);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//updateProjectTime is Done
+	public boolean updateProjectTime(String ID,int newTime) {
+		//Returns true if the time is successfully edited, returns false if not
+		Project foundProject = retrieveProject(ID);
+		if(foundProject != null) {
+			foundProject.setTime(newTime);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public int getTimeSpent(String ID){
+		return 0;
 	}
 }

@@ -92,5 +92,28 @@ public class Project {
 		return this.time;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public void setBudget(int budget) {
+		this.budget = budget;
+	}
+
+	public void setRoI(int roI) {
+		RoI = roI;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
 }
 
