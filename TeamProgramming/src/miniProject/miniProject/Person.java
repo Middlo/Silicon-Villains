@@ -31,15 +31,6 @@ public class Person {
 		// project.
 		return null;
 	}
-
-	public String printOnePerson(String ID) {
-		Person exactPerson = retrievePerson(ID);// we get employee with this ID
-		if (exactPerson != null) {
-			return exactPerson.toString();
-		} else
-			return "Person with this ID: " + ID + " does not exist.";
-
-	}
 	
 	public String getID() {
 		return this.ID;
