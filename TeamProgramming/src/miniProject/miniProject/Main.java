@@ -40,6 +40,14 @@ public class Main{
 	public Person retrievePerson(String ID) {
 		//Retrieves the Project with id specified if it is present in the arraylist
 		//otherwise returns null if it is not present
+
+//		for each option
+//		for(Person each : people){
+//			if(each != null && each.getID().equals(ID) ){
+//				return each;
+//			}
+//		}
+
 		for (int i = 0; i < this.people.size(); i++) { 
 			if (people.get(i) != null && people.get(i).getID().equals(ID)) { 
 				return people.get(i); 
@@ -99,7 +107,15 @@ public class Main{
 	public Project retrieveProject(String ID) {
 		//Retrieves the Project with id specified if it is present in the arraylist
 		//otherwise returns null if it is not present
-		for (int i = 0; i < this.projects.size(); i++) { 
+
+//		for each option
+//		for(Project each : projects){
+//			if(each != null && each.getID().equals(ID) ){
+//				return each;
+//			}
+//		}
+
+		for (int i = 0; i < this.projects.size(); i++) {
 			if (projects.get(i) != null && projects.get(i).getID().equals(ID)) { 
 				return projects.get(i);
 			}
