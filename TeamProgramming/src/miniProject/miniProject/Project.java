@@ -8,7 +8,7 @@ public class Project {
 	private int RoI;
 	private int time; // should be array with each member and their time
 
-	Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
+	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
 		this.ID = ID;
 		this.name = name;
 		this.desc = desc;

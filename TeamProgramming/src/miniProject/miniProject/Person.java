@@ -6,9 +6,9 @@ public class Person {
 	private int age;
 	ArrayList<Project> A;
 	ArrayList<Person> people;
-	private final int Salary= 15000;// add fixed salary
+	private final int Salary = 15000;// add fixed salary
 
-	Person(String ID, String name, int age) {
+	public Person(String ID, String name, int age) {
 		this.ID = ID;
 		this.name = name;
 		this.age = age;
