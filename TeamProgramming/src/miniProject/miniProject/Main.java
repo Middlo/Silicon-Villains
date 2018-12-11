@@ -10,7 +10,7 @@ public class Main{
 	public Main() throws Exception {
 		projects = new ArrayList<>();
 		people = new ArrayList<>();
-		jsonio = new JsonIO("/Users/Shab - Uni/Silicon-Villains/JsonFiles/Persons.json","/Users/Shab - Uni/eclipse-workspace/Silicon-Villains/JsonFiles/Projects.json");
+		jsonio = new JsonIO("/Users/Public/Persons.json","/Users/Public/Projects.json");
 	}
 	
 	public static void main (String[]args) throws Exception {
@@ -235,6 +235,9 @@ public class Main{
 				break;
 			case 5:
 				//Save
+				jsonio.savePerson();
+				jsonio.saveProject();
+				System.out.println("Saved Projects and People to file!");
 				break;
 			}
 		}while(mainMenuChoice!=6);
