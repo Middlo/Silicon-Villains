@@ -8,9 +8,9 @@ public class Main{
 	JsonIO jsonio;
 	
 	public Main() throws Exception {
-		projects = new ArrayList<>();
-		people = new ArrayList<>();
 		jsonio = new JsonIO("/Users/Public/Persons.json","/Users/Public/Projects.json");
+		projects = jsonio.returnProjectList();
+		people = jsonio.returnPersonList();
 	}
 	
 	public static void main (String[]args) throws Exception {
