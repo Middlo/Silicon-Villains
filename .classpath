@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="miniProject/" kind="src" path="TeamProgramming/src"/>
 	<classpathentry kind="src" path="TeamProgramming/src/miniProject"/>
+	<classpathentry kind="lib" path="TeamProgramming/src/miniProject/miniProject/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="TeamProgramming/bin"/>
 </classpath>
