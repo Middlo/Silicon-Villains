@@ -322,16 +322,10 @@ public class Main{
 		//Retrieves the Project with id specified if it is present in the arraylist
 		//otherwise returns null if it is not present
 
-//		for each option
-//		for(Project each : projects){
-//			if(each != null && each.getID().equals(ID) ){
-//				return each;
-//			}
-//		}
 
-		for (int i = 0; i < this.projects.size(); i++) {
-			if (projects.get(i) != null && projects.get(i).getID().equals(ID)) { 
-				return projects.get(i);
+		for(Project each : projects){
+			if(each != null && each.getID().equals(ID) ){
+				return each;
 			}
 		}
 		return null;
