@@ -40,7 +40,11 @@ public class Io {
 		System.out.print("Choice: ");
 	}
 	
-	public void printAddProjectMenu() {
+	public void printEditProjectMenu() {
+		
+	}
+	
+	public void printEditPersonMenu() {
 		
 	}
 	

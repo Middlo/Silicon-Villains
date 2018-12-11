@@ -24,7 +24,6 @@ public class Main{
 	}
 	
 	public void run() {
-		readJsonFile();
 		
 		int mainMenuChoice,projectsMenuChoice,memberMenuChoice;
 		Io io = new Io();
@@ -83,6 +82,7 @@ public class Main{
 					break;
 				case 3:
 					//Edit
+					io.printEditProjectMenu();
 					break;
 				case 4:
 					//View
@@ -145,10 +145,6 @@ public class Main{
 				break;
 			}
 		}while(mainMenuChoice!=6);
-	}
-	
-	public void readJsonFile() {
-		
 	}
 	
 	public boolean createPerson(String ID, String name, int age) {
