@@ -170,7 +170,7 @@ public class Main{
 		if(retrieveProject(ID)==null) {
 			this.projects.add(project);
 		}else {
-			System.out.println("Error: Cannot add project, project already existing");
+			System.err.println("Error: Cannot add project, project already existing");
 		}
 	}
 	
