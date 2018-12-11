@@ -68,6 +68,9 @@ public class Main{
 			case 3:
 				//Edit
 				break;
+			case 4:
+				//View
+				break;
 			}
 			
 			break;

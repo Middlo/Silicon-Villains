@@ -13,8 +13,10 @@ public class Io {
 		System.out.println("Actions");
 		System.out.println("1 - Manipulate Projects");
 		System.out.println("2 - Manipulate Members");
-		System.out.println("3 - Save data to files");
-		System.out.println("4 - EXIT");
+		System.out.println("3 - Print all Projects");
+		System.out.println("4 - Print all Members");
+		System.out.println("5 - Save data to files");
+		System.out.println("6 - EXIT");
 		System.out.print("Choice: ");
 	}
 	
@@ -23,7 +25,8 @@ public class Io {
 		System.out.println("1 - Add a Project");
 		System.out.println("2 - Remove a Project");
 		System.out.println("3 - Edit a Project");
-		System.out.println("4 - GO BACK");
+		System.out.println("4 - View a Project");
+		System.out.println("5 - GO BACK");
 		System.out.print("Choice: ");
 	}
 	
@@ -32,7 +35,8 @@ public class Io {
 		System.out.println("1 - Add a Member");
 		System.out.println("2 - Remove a Member");
 		System.out.println("3 - Edit a Member");
-		System.out.println("4 - GO BACK");
+		System.out.println("4 - View a Member");
+		System.out.println("5 - GO BACK");
 		System.out.print("Choice: ");
 	}
 	
