@@ -234,6 +234,7 @@ public class Main{
 		
 		if(retrievePerson(ID)==null) {
 			this.people.add(person);
+			jsonio.addPerson(person);
 			return true;
 		}else {
 			return false;
@@ -246,6 +247,7 @@ public class Main{
 			
 		if (person != null) {
 			this.people.remove(person);// we remove that employee if he/she exists
+			jsonio.removePerson(person);
 			return true;
 		}else {
 			return false;
@@ -301,6 +303,7 @@ public class Main{
 		
 		if(retrieveProject(ID)==null) {
 			this.projects.add(project);
+			jsonio.addProject(project);
 		}else {
 			System.err.println("Error: Cannot add project, project already existing");
 		}
@@ -313,6 +316,7 @@ public class Main{
 		
 		if (project != null) {
 			this.projects.remove(project);// we remove that employee if he/she exists
+			jsonio.removeProject(project);
 		}else {
 		System.out.println("Project with this ID:" + ID + " is not registered in the system.");
 		}
@@ -425,5 +429,19 @@ public class Main{
 		}else {
 			return false;
 		}
+	}
+	
+	public int timeSpent(String ID) {
+		int sum = 0;
+		
+		for(Project eachProject : this.projects) {
+			for(PersonTime eachTime : eachProject.getTimes()) {
+				if(eachTime.getID().equals(ID)) {
+					sum += eachTime.getTime();
+				}
+			}
+		}
+		
+		return sum;
 	}
 }
