@@ -58,6 +58,7 @@ public class Main{
 						RoI = io.getInteger();
 						
 						createProject(id,name,desc,duration,budget,RoI);
+						System.out.println("Project created");
 					}else {
 						io.printProjectExistsError();
 					}

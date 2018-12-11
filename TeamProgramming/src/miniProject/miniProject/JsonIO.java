@@ -24,8 +24,13 @@ public class JsonIO
 	{
 		this.PersonPath=PersonPath;
 		this.ProjectPath=ProjectPath;
-		PersonJson=(JSONObject) readJson(PersonPath);
-		ProjectJson=(JSONObject) readJson(ProjectPath);
+		try {
+			PersonJson=(JSONObject) readJson(PersonPath);
+			ProjectJson=(JSONObject) readJson(ProjectPath);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
