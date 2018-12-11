@@ -44,6 +44,22 @@ public class Io {
 		
 	}
 	
+	public void printProjectExistsError() {
+		System.out.println("ERROR: The project already exists!");
+	}
+	
+	public void printProjectNotExistsError() {
+		System.out.println("ERROR: The project already exists!");
+	}
+	
+	public void printPersonExistsError() {
+		System.out.println("ERROR: The person already exists!");
+	}
+	
+	public void printPersonNotExistsError() {
+		System.out.println("ERROR: The person does not exists!");
+	}
+	
 	public int getInteger() {
 		int number = scanner.nextInt();
 		scanner.nextLine();

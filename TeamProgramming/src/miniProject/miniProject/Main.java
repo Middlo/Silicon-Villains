@@ -26,71 +26,125 @@ public class Main{
 	public void run() {
 		readJsonFile();
 		
-		int choice;
+		int mainMenuChoice,projectsMenuChoice,memberMenuChoice;
 		Io io = new Io();
 		
-		io.printMainMenu();
-		choice = io.getInteger();
-		
-		switch (choice) {
-		case 1:
-			io.printProjectsMenu();
-			choice = io.getInteger();
-			switch (choice) {
+		do {
+			io.printMainMenu();
+			mainMenuChoice = io.getInteger();
+			
+			switch (mainMenuChoice) {
 			case 1:
-				//Add
+				
 				String id,name,desc;
-				int duration,budget,RoI;
+				int duration,budget,RoI,age;
 				
-				System.out.println("Insert ID:");
-				id = io.getString();
+				io.printProjectsMenu();
+				projectsMenuChoice = io.getInteger();
+				switch (projectsMenuChoice) {
+				case 1:
+					//Add					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					if(retrieveProject(id)==null) {
+						System.out.println("Insert name:");
+						name = io.getString();
+						
+						System.out.println("Insert desc:");
+						desc = io.getString();
+						
+						System.out.println("Insert duration:");
+						duration = io.getInteger();
+						
+						System.out.println("Insert budget:");
+						budget = io.getInteger();
+						
+						System.out.println("Insert RoI:");
+						RoI = io.getInteger();
+						
+						createProject(id,name,desc,duration,budget,RoI);
+					}else {
+						io.printProjectExistsError();
+					}
+					break;
+				case 2:
+					//Remove
+					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					if(retrieveProject(id)!=null) {
+						removeProject(id);
+						System.out.println("Person removed");
+					}else {
+						io.printProjectNotExistsError();
+					}
+					break;
+				case 3:
+					//Edit
+					break;
+				case 4:
+					//View
+					break;
+				}
 				
-				System.out.println("Insert name:");
-				name = io.getString();
-				
-				System.out.println("Insert desc:");
-				desc = io.getString();
-				
-				System.out.println("Insert duration:");
-				duration = io.getInteger();
-				
-				System.out.println("Insert budget:");
-				budget = io.getInteger();
-				
-				System.out.println("Insert RoI:");
-				RoI = io.getInteger();
-				
-				createProject(id,name,desc,duration,budget,RoI);
 				break;
 			case 2:
-				//Remove
+				io.printMembersMenu();
+				memberMenuChoice = io.getInteger();
+				switch (memberMenuChoice) {
+				case 1:
+					//Add					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					if(retrievePerson(id)==null) {
+						System.out.println("Insert name:");
+						name = io.getString();
+						
+						System.out.println("Insert age:");
+						age = io.getInteger();
+						
+						createPerson(id,name,age);
+						System.out.println("Person created");
+					}else {
+						io.printPersonExistsError();
+					}
+					
+					break;
+				case 2:
+					//Remove					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					if(retrievePerson(id)!=null) {
+						removePerson(id);
+						System.out.println("Person removed");
+					}else {
+						io.printPersonNotExistsError();
+					}
+					break;
+				case 3:
+					//Edit
+					break;
+				case 4:
+					//View
+					break;
+				}
+				
 				break;
 			case 3:
-				//Edit
+				//Print
 				break;
 			case 4:
-				//View
+				//Print
+				break;
+			case 5:
+				//Save
 				break;
 			}
-			
-			break;
-		case 2:
-			io.printMembersMenu();
-			choice = io.getInteger();
-			switch (choice) {
-			case 1:
-				//Add
-				break;
-			case 2:
-				//Remove
-				break;
-			case 3:
-				//Edit
-				break;
-			}
-			
-			break;
-		}
+		}while(mainMenuChoice!=6);
 	}
 	
 	public void readJsonFile() {
