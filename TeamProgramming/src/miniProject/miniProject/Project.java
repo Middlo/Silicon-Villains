@@ -13,7 +13,7 @@ public class Project {
 	private ArrayList<PersonTime> times; // should be array with each member and their time
 	//private ArrayList<Task> tasks; //TODO
 
-	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
+	public Project(String ID, String name, String desc, int duration, int budget, int RoI) {
 		this.ID = ID;
 		this.name = name;
 		this.desc = desc;

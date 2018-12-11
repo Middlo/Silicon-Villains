@@ -41,4 +41,8 @@ public class Io {
 		scanner.nextLine();
 		return number;
 	}
+	
+	public String getString() {
+		return scanner.nextLine();
+	}
 }
