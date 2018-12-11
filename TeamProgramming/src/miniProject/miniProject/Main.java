@@ -5,15 +5,72 @@ import java.util.ArrayList;
 public class Main{
 	ArrayList<Project> projects;
 	ArrayList<Person> people;
+	JsonIO jsonio;
 	
 	public Main() {
 		projects = new ArrayList<>();
 		people = new ArrayList<>();
+		try {
+			jsonio = new JsonIO("/Users/<username>/eclipse-workspace/Silicon-Villains/JsonFiles/Persons.json","/Users/<username>/eclipse-workspace/Silicon-Villains/JsonFiles/Projects.json");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main (String[]args) {
 		Main program = new Main();
-		//program.run();
+		program.run();
+	}
+	
+	public void run() {
+		readJsonFile();
+		
+		int choice;
+		Io io = new Io();
+		
+		io.printMainMenu();
+		choice = io.getInteger();
+		
+		switch (choice) {
+		case 1:
+			io.printProjectsMenu();
+			choice = io.getInteger();
+			switch (choice) {
+			case 1:
+				//Add
+				System.out.println("Insert ID:");
+				break;
+			case 2:
+				//Remove
+				break;
+			case 3:
+				//Edit
+				break;
+			}
+			
+			break;
+		case 2:
+			io.printMembersMenu();
+			choice = io.getInteger();
+			switch (choice) {
+			case 1:
+				//Add
+				break;
+			case 2:
+				//Remove
+				break;
+			case 3:
+				//Edit
+				break;
+			}
+			
+			break;
+		}
+	}
+	
+	public void readJsonFile() {
+		
 	}
 	
 	public boolean createPerson(String ID, String name, int age) {

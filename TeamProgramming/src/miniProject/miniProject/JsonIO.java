@@ -76,7 +76,7 @@ public class JsonIO
 		ProjectObj.put("duration", p.getDuration());
 		ProjectObj.put("budget", p.getBudget());
 		ProjectObj.put("RoI", p.getRoI());
-		ProjectObj.put("time", p.getTime());
+		ProjectObj.put("times", p.getTimes());
 		if(!projectExists(p))
 			ProjectJson.put(p.getID(), ProjectObj);
 	}

@@ -104,6 +104,10 @@ public class Project {
 	public int getRoI() {
 		return this.RoI;
 	}
+	
+	public ArrayList<PersonTime> getTimes(){
+		return this.times;
+	}
 
 	public void setName(String name) {
 		this.name = name;
