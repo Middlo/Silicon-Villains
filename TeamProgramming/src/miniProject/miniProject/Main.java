@@ -11,7 +11,7 @@ public class Main{
 		projects = new ArrayList<>();
 		people = new ArrayList<>();
 		try {
-			jsonio = new JsonIO("/Users/<username>/eclipse-workspace/Silicon-Villains/JsonFiles/Persons.json","/Users/<username>/eclipse-workspace/Silicon-Villains/JsonFiles/Projects.json");
+			jsonio = new JsonIO("/Users/Shab - Uni/eclipse-workspace/Silicon-Villains/JsonFiles/Persons.json","/Users/Shab - Uni/eclipse-workspace/Silicon-Villains/JsonFiles/Projects.json");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
