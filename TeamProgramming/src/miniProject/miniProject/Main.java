@@ -25,7 +25,7 @@ public class Main{
 	
 	public void run() {
 		
-		int mainMenuChoice,projectsMenuChoice,memberMenuChoice;
+		int mainMenuChoice,projectsMenuChoice,memberMenuChoice,editProjectMenuChoice,editPersonMenuChoice;
 		Io io = new Io();
 		
 		do {
@@ -82,10 +82,54 @@ public class Main{
 					break;
 				case 3:
 					//Edit
-					io.printEditProjectMenu();
+					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					if(retrieveProject(id)!=null) {
+						do {
+							io.printEditProjectMenu();
+							editProjectMenuChoice = io.getInteger();
+							switch (editProjectMenuChoice) {
+							case 1:
+								name = io.getString();
+								this.updateProjectName(id, name);
+								break;
+							case 2:
+								desc = io.getString();
+								this.updateProjectDesc(id, desc);
+								break;
+							case 3:
+								duration = io.getInteger();
+								this.updateProjectDuration(id, duration);
+								break;
+							case 4:
+								budget = io.getInteger();
+								this.updateProjectBudget(id, budget);
+								break;
+							case 5:
+								RoI = io.getInteger();
+								this.updateProjectRoI(id, RoI);
+								break;
+							}
+						}while(editProjectMenuChoice!=6);
+					}else {
+						io.printProjectNotExistsError();
+					}
 					break;
 				case 4:
 					//View
+					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					Project foundProject = retrieveProject(id);
+					
+					if(foundProject!=null) {
+						System.out.println(foundProject);
+					}else {
+						io.printPersonNotExistsError();
+					}
 					break;
 				}
 				
@@ -127,18 +171,56 @@ public class Main{
 					break;
 				case 3:
 					//Edit
+					
+
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					if(retrievePerson(id)!=null) {
+						io.printEditPersonMenu();
+						editPersonMenuChoice = io.getInteger();
+						switch (editPersonMenuChoice) {
+						case 1:
+							name = io.getString();
+							this.updatePersonName(id, name);
+							break;
+						case 2:
+							age = io.getInteger();
+							this.updatePersonAge(id, age);
+							break;
+						}
+					}else {
+						io.printPersonNotExistsError();
+					}
 					break;
 				case 4:
 					//View
+					
+					System.out.println("Insert ID:");
+					id = io.getString();
+					
+					Person foundPerson = retrievePerson(id);
+					
+					if(foundPerson!=null) {
+						System.out.println(foundPerson);
+					}else {
+						io.printPersonNotExistsError();
+					}
 					break;
 				}
 				
 				break;
 			case 3:
 				//Print
+				for(Project each : this.projects) {
+					System.out.println(each);
+				}
 				break;
 			case 4:
 				//Print
+				for(Project each : this.projects) {
+					System.out.println(each);
+				}
 				break;
 			case 5:
 				//Save

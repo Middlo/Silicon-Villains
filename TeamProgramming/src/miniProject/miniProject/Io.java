@@ -41,11 +41,22 @@ public class Io {
 	}
 	
 	public void printEditProjectMenu() {
-		
+		System.out.println("Select attribute to edit");
+		System.out.println("1 - Name");
+		System.out.println("2 - Description");
+		System.out.println("3 - Duration");
+		System.out.println("4 - Budget");
+		System.out.println("5 - RoI");
+		System.out.println("6 - GO BACK");
+		System.out.print("Choice: ");
 	}
 	
 	public void printEditPersonMenu() {
-		
+		System.out.println("Select attribute to edit");
+		System.out.println("1 - Name");
+		System.out.println("2 - Age");
+		System.out.println("3 - GO BACK");
+		System.out.print("Choice: ");
 	}
 	
 	public void printProjectExistsError() {
