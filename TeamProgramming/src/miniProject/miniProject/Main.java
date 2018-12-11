@@ -7,18 +7,13 @@ public class Main{
 	ArrayList<Person> people;
 	JsonIO jsonio;
 	
-	public Main() {
+	public Main() throws Exception {
 		projects = new ArrayList<>();
 		people = new ArrayList<>();
-		try {
-			jsonio = new JsonIO("/Users/Shab - Uni/eclipse-workspace/Silicon-Villains/JsonFiles/Persons.json","/Users/Shab - Uni/eclipse-workspace/Silicon-Villains/JsonFiles/Projects.json");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		jsonio = new JsonIO("/Users/Shab - Uni/Silicon-Villains/JsonFiles/Persons.json","/Users/Shab - Uni/eclipse-workspace/Silicon-Villains/JsonFiles/Projects.json");
 	}
 	
-	public static void main (String[]args) {
+	public static void main (String[]args) throws Exception {
 		Main program = new Main();
 		program.run();
 	}
@@ -355,6 +350,10 @@ public class Main{
 		// project.
 		ArrayList<Project> ParticipationList = new ArrayList<>();
 		ParticipationList.add(retrieveProject(ID));
+		
+		//for each Project
+		// for each PeronTime
+		//  check if ID equals to 
 
 		System.out.println(ParticipationList);
 		return null;

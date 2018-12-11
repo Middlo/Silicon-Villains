@@ -1,7 +1,7 @@
 package miniProject;
 
 public class PersonTime {
-	private String ID;
+	private String ID; //Id of the person
 	private int time; //time in minutes
 	
 	public String getID() {
