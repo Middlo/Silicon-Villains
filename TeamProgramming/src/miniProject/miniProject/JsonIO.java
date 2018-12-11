@@ -50,7 +50,7 @@ public class JsonIO
 		{
 			Project p=new Project(Key,(String)((JSONObject) PersonJson.get(Key)).get("name"),(String)((JSONObject) PersonJson.get(Key)).get("desc"),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("duration")).intValue(),((Long) ((JSONObject) PersonJson.get(Key)).get("budget")).intValue(),
-					((Long) ((JSONObject) PersonJson.get(Key)).get("RoI")).intValue(),((Long) ((JSONObject) PersonJson.get(Key)).get("time")).intValue());
+					((Long) ((JSONObject) PersonJson.get(Key)).get("RoI")).intValue(),(ArrayList<PersonTime>)(((JSONObject) PersonJson.get(Key)).get("times")));
 			projectArrayList.add(p);
 		}
 		return projectArrayList;

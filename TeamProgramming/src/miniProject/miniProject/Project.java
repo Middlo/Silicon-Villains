@@ -22,6 +22,16 @@ public class Project {
 		this.RoI = RoI;
 		this.times = new ArrayList<>();
 	}
+	
+	public Project(String ID, String name, String desc, int duration, int budget, int RoI, ArrayList<PersonTime>times) {
+		this.ID = ID;
+		this.name = name;
+		this.desc = desc;
+		this.duration = duration;
+		this.budget = budget;
+		this.RoI = RoI;
+		this.times = times;
+	}
 
 	public double costVariance (int current_week) {
 		double earned_Value = earnedValue(current_week);
