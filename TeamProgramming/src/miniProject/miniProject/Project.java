@@ -11,9 +11,8 @@ public class Project {
 	private int budget;
 	private int RoI;
 	private ArrayList<PersonTime> times; // should be array with each member and their time
-	//private ArrayList<Task> tasks; //TODO
+	// private ArrayList<Task> tasks; //TODO
 
-	
 	ArrayList<Task> tasks;
 
 	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
@@ -26,12 +25,13 @@ public class Project {
 		this.times = new ArrayList<>();
 	}
 
-	public int costVariance() {
-		/*
-		 * this method should return the cost variance the cost variance = budgeted cost
-		 * of the work - actual cost of work
-		 */
-		return 0;
+	public double costVariance(int current_week) {
+
+		double earned_Value = earnedValue(current_week);
+		double cost_Variance = 0;
+		cost_Variance = earned_Value - this.budget;
+		return cost_Variance;
+
 	}
 
 	public int scheduleVariance() {
@@ -42,77 +42,80 @@ public class Project {
 
 		return 0;
 	}
+
 	public boolean updateTime(String personID, int time) {
-		//The method goes through each couple of PersonID and time spent in the project
-		//and if the ID is found then the time is updated and the method returns true
+		// The method goes through each couple of PersonID and time spent in the project
+		// and if the ID is found then the time is updated and the method returns true
 		boolean found = false;
-		for(PersonTime couple : this.times) {
-			if(personID.equals(couple.getID())) {
+		for (PersonTime couple : this.times) {
+			if (personID.equals(couple.getID())) {
 				couple.setTime(time);
 				found = true;
 			}
 		}
 		return found;
 	}
-	
-	public void createTask(String name, int start_week,int end_week,int sn) {
 
-		Task task = new Task(name, start_week, end_week,sn);
+	public void createTask(String name, int start_week, int end_week, int sn) {
+
+		Task task = new Task(name, start_week, end_week, sn);
 		this.tasks.add(task);
 	}
+
 	public int getNumberOfTasks() {
 		return tasks.size();
 	}
+
 	public Task getTask(int position) {
 		return this.tasks.get(position);
 	}
+
 	public Task retrieveNotCompletedTask(int week) {
 
 		for (int i = 0; i < this.tasks.size(); i++) {
-			if(tasks != null) {
-				
-			if((this.getTask(i).getStart_week()<week && this.getTask(i).getEnd_week()>week) || 
-					(this.getTask(i).getStart_week()>week && this.getTask(i).getEnd_week()>week))
-				
+			if (tasks != null) {
+
+				if ((this.getTask(i).getStart_week() < week && this.getTask(i).getEnd_week() > week)
+						|| (this.getTask(i).getStart_week() > week && this.getTask(i).getEnd_week() > week))
+
 					return tasks.get(i);
-			
-			else if(this.getTask(i).getStart_week()<week && this.getTask(i).getEnd_week()<week)
-				System.out.println("Task is completed");
-			
+
+				else if (this.getTask(i).getStart_week() < week && this.getTask(i).getEnd_week() < week)
+					System.out.println("Task is completed");
+
 			}
 		}
-		System.out.println("Task with this name:" + name + " is not registered in this project.");// otherwise we print a
-																								// message
+		System.out.println("Task with this name:" + name + " is not registered in this project.");// otherwise we print
+																									// a
+																									// message
 		return null;
 	}
+
 	public double earnedValue(int current_week) {
-		
-		double earned_value=0;
-		Task task=retrieveNotCompletedTask(current_week);
-		//String name= task.getName();
-		int serial_number=task.getSerial_number();
-		double completed_work=this.getNumberOfTasks()/serial_number;
-		earned_value=this.budget*completed_work;
+
+		double earned_value = 0;
+		Task task = retrieveNotCompletedTask(current_week);
+		// String name= task.getName();
+		int serial_number = task.getSerial_number();
+		double completed_work = this.getNumberOfTasks() / serial_number;
+		earned_value = this.budget * completed_work;
 		return earned_value;
-		
+
 		/*
-		 * this method should return the earned value = % of completed
-		 * work / budget at completion (BAC)
+		 * this method should return the earned value = % of completed work / budget at
+		 * completion (BAC)
 		 */
 	}
-	
+
 	public String scheduleActivity() {
 		/*
-		 * this method will return the project's schedule and planned activity.
-		 * it should return the start week and end week of the project
+		 * this method will return the project's schedule and planned activity. it
+		 * should return the start week and end week of the project
 		 */
 		return null;
 	}
-	
-	
-	//Risk Matrix method; think about this!!!
-	
-	
+
+	// Risk Matrix method; think about this!!!
 
 	public String getID() {
 		return this.ID;
@@ -141,7 +144,8 @@ public class Project {
 	public int getTime() {
 		return this.time;
 	}
-	public ArrayList<PersonTime> getTimes(){
+
+	public ArrayList<PersonTime> getTimes() {
 		return this.times;
 	}
 
@@ -164,6 +168,7 @@ public class Project {
 	public void setRoI(int roI) {
 		RoI = roI;
 	}
+
 	public String toString() {
 
 		final String END_OF_LINE = System.lineSeparator();
@@ -172,9 +177,8 @@ public class Project {
 		projectInfo += "Decription: " + this.desc + END_OF_LINE;
 		projectInfo += "Duration: " + this.duration + END_OF_LINE;
 		projectInfo += "Budget: " + this.budget + " SEK per month" + END_OF_LINE;
-		
+
 		return projectInfo;
 	}
 
 }
-
