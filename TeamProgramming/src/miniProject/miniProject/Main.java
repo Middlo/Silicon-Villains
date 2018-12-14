@@ -2,6 +2,8 @@ package miniProject;
 
 import java.util.ArrayList;
 
+import miniProject.Task;
+
 public class Main{
 	ArrayList<Project> projects;
 	ArrayList<Person> people;
@@ -322,7 +324,6 @@ public class Main{
 			System.err.println("Error: Cannot add project, project already existing");
 		}
 	}
-	
 	//removePreject is Done
 	public void removeProject(String ID) {
 		//Deletes a project with specified ID if it is present in the ArrayList
