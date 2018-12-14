@@ -8,14 +8,14 @@ public class Project {
 	private String name;
 	private String desc;
 	private int duration;
-	private int budget;
+	private double budget;
 	private int RoI;
 	private ArrayList<PersonTime> times; // should be array with each member and their time
 	// private ArrayList<Task> tasks; //TODO
 
 	ArrayList<Task> tasks;
 
-	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
+	public Project(String ID, String name, String desc, int duration, double budget, int RoI, int time) {
 		this.ID = ID;
 		this.name = name;
 		this.desc = desc;
@@ -133,7 +133,7 @@ public class Project {
 		return this.duration;
 	}
 
-	public int getbudget() {
+	public double getbudget() {
 		return this.budget;
 	}
 
@@ -161,7 +161,7 @@ public class Project {
 		this.duration = duration;
 	}
 
-	public void setBudget(int budget) {
+	public void setBudget(double budget) {
 		this.budget = budget;
 	}
 
