@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Project {
 
-	private String projectID;
+	private String ID;
 	private String name;
 	private String desc;
 	private int duration;//in weeks
@@ -16,13 +16,8 @@ public class Project {
 	
 	ArrayList<Task> tasks;
 
-<<<<<<< HEAD
 	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
 		this.ID = ID;
-=======
-	public Project(String projectID, String name, String desc, int duration, double budget, int RoI, int time) {
-		this.projectID = projectID;
->>>>>>> 06419f932301cb2a89ba19e9c63789f2168ea20e
 		this.name = name;
 		this.desc = desc;
 		this.duration = duration;
@@ -38,17 +33,10 @@ public class Project {
 		cost_Variance = earned_Value - this.budget;
 		return cost_Variance;
 	}
-<<<<<<< HEAD
 	
 	public double scheduleVariance(int current_week) {
 		
 		return (this.earnedValue(current_week)-this.plannedValue(current_week));
-=======
-
-	public int scheduleVariance(int current_week) {
-		
-		
->>>>>>> 06419f932301cb2a89ba19e9c63789f2168ea20e
 		
 		/*
 		 * this method should return the schedule variance the schedule variance =
@@ -134,8 +122,8 @@ public class Project {
 	
 	
 
-	public String getProjectID() {
-		return this.projectID;
+	public String getID() {
+		return this.ID;
 	}
 
 	public String getName() {
@@ -158,14 +146,10 @@ public class Project {
 		return this.RoI;
 	}
 
-<<<<<<< HEAD
 	public int getTime() {
 		return this.time;
 	}
 	public ArrayList<PersonTime> getTimes(){
-=======
-	public ArrayList<PersonTime> getTimes() {
->>>>>>> 06419f932301cb2a89ba19e9c63789f2168ea20e
 		return this.times;
 	}
 
@@ -191,7 +175,7 @@ public class Project {
 	public String toString() {
 
 		final String END_OF_LINE = System.lineSeparator();
-		String projectInfo = "Project ID: " + this.projectID + END_OF_LINE;
+		String projectInfo = "ID of a person: " + this.ID + END_OF_LINE;
 		projectInfo += "Name Of Project: " + this.name + END_OF_LINE;
 		projectInfo += "Decription: " + this.desc + END_OF_LINE;
 		projectInfo += "Duration: " + this.duration + END_OF_LINE;

@@ -1,20 +1,18 @@
 package miniProject;
 
 public class Task {
-	private String taskName;
+	private String name;
 	private int start_week;
 	private int end_week;
 	private int serial_number;
 	
 	
-	public Task(String taskName, int start_week, int end_week, int serial_number) {
-		this.taskName = taskName;
-		this.start_week = start_week;
-		this.end_week =end_week;
-		this.serial_number = serial_number;
-	
+	public Task(String name, int sw, int ew, int sn) {
+		this.name=name;
+		this.start_week=sw;
+		this.end_week=ew;
+		this.serial_number=sn;
 	}
-<<<<<<< HEAD
 	public boolean completedTask(int week) {
 		if(this.end_week<week)
 			return true;
@@ -26,13 +24,9 @@ public class Task {
 	}
 	public String getTaskName() {
 		return name;
-=======
-	public String getTaskName() {
-		return taskName;
->>>>>>> 06419f932301cb2a89ba19e9c63789f2168ea20e
 	}
-	public void setName(String taskName) {
-		this.taskName = taskName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getSerial_number() {
 		return serial_number;
@@ -45,7 +39,7 @@ public class Task {
 	}
 	public void setEnd_week(int end_week) {
 		this.end_week = end_week;
-	} 
+	}
 	public int getStart_week() {
 		return start_week;
 	}
@@ -54,7 +48,6 @@ public class Task {
 	}
 	
 	public String toString() {
-<<<<<<< HEAD
 		return 	"Name: " + this.name + "\n" +
 				"Serial Number: " + this.serial_number + "\n" +
 				"Start Week: " + this.start_week + "\n" +
@@ -62,13 +55,5 @@ public class Task {
 				"===========================\n" ;
 	}
 
-=======
-		return 	"Name: " + taskName + "\n" +
-				"Serial Number: " + serial_number + "\n" +
-				"Start Week: " + start_week + "\n" +
-				"End Week: " + end_week + "\n" +
-				"===========================\n" ;
-	}
->>>>>>> 06419f932301cb2a89ba19e9c63789f2168ea20e
 
 }
