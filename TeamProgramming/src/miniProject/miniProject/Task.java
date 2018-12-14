@@ -13,7 +13,16 @@ public class Task {
 		this.end_week=ew;
 		this.serial_number=sn;
 	}
-	public String getName() {
+	public boolean completedTask(int week) {
+		if(this.end_week<week)
+			return true;
+		else
+			return false;
+	}
+	public int LengthOfTask() {
+		return this.end_week-this.start_week;
+	}
+	public String getTaskName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -37,5 +46,14 @@ public class Task {
 	public void setStart_week(int start_week) {
 		this.start_week = start_week;
 	}
+	
+	public String toString() {
+		return 	"Name: " + this.name + "\n" +
+				"Serial Number: " + this.serial_number + "\n" +
+				"Start Week: " + this.start_week + "\n" +
+				"End Week: " + this.end_week + "\n" +
+				"===========================\n" ;
+	}
+
 
 }

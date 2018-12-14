@@ -359,20 +359,23 @@ public class Main{
 	// Stores them into a new ArrayList
 	// Displays them by printing out (??? toString ???)
 
-	public String productsParticipated(String ID) {
+	public ArrayList<Project> productsParticipated(String ID) {
 		// this method should return each members work products participated on the
 		// project.
 		ArrayList<Project> ParticipationList = new ArrayList<>();
-		ParticipationList.add(retrieveProject(ID));
-		
 		//for each Project
-		// for each PeronTime
-		//  check if ID equals to 
-
-		System.out.println(ParticipationList);
-		return null;
+		//for each PeronTime
+		//check if ID equals to
+		for (Project each : projects){
+			for(PersonTime every:each.getTimes() ){
+				if(every.getID().equals(ID)){
+					ParticipationList.add(each);
+				}
+			}
+		}
+		return ParticipationList;
 	}
-	
+
 	//updateProjectName is Done
 	public boolean updateProjectName(String ID,String newName) {
 		//Returns true if the name is successfully edited, returns false if not

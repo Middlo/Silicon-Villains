@@ -7,7 +7,7 @@ public class Project {
 	private String ID;
 	private String name;
 	private String desc;
-	private int duration;
+	private int duration;//in weeks
 	private int budget;
 	private int RoI;
 	private ArrayList<PersonTime> times; // should be array with each member and their time
@@ -26,21 +26,34 @@ public class Project {
 		this.times = new ArrayList<>();
 	}
 
-	public int costVariance() {
-		/*
-		 * this method should return the cost variance the cost variance = budgeted cost
-		 * of the work - actual cost of work
-		 */
-		return 0;
-	}
+	public double costVariance(int current_week) {
 
-	public int scheduleVariance() {
+		double earned_Value = earnedValue(current_week);
+		double cost_Variance = 0;
+		cost_Variance = earned_Value - this.budget;
+		return cost_Variance;
+	}
+	
+	public double scheduleVariance(int current_week) {
+		
+		return (this.earnedValue(current_week)-this.plannedValue(current_week));
+		
 		/*
 		 * this method should return the schedule variance the schedule variance =
 		 * budgeted cost of the work performed - budgeted cost of work scheduled
 		 */
 
 		return 0;
+	}
+	public double plannedValue(int current_week) {
+		
+		int projectDuration=this.duration;
+		
+		double percentageOfProjectDone=(double)(current_week/projectDuration);
+		double plannedValue=percentageOfProjectDone*this.budget;
+		
+		return plannedValue;
+		
 	}
 	public boolean updateTime(String personID, int time) {
 		//The method goes through each couple of PersonID and time spent in the project
@@ -66,32 +79,27 @@ public class Project {
 	public Task getTask(int position) {
 		return this.tasks.get(position);
 	}
-	public Task retrieveNotCompletedTask(int week) {
+	public double retrieveCompletedPercentage(int week) {
+		
+		double completedPercentage=0.0;
+		int completedTasks=0;
+		int allTasks=0;
 
-		for (int i = 0; i < this.tasks.size(); i++) {
+		for (Task task : this.tasks) {
 			if(tasks != null) {
-				
-			if((this.getTask(i).getStart_week()<week && this.getTask(i).getEnd_week()>week) || 
-					(this.getTask(i).getStart_week()>week && this.getTask(i).getEnd_week()>week))
-				
-					return tasks.get(i);
-			
-			else if(this.getTask(i).getStart_week()<week && this.getTask(i).getEnd_week()<week)
-				System.out.println("Task is completed");
-			
+				allTasks+=task.LengthOfTask();
+				if(task.completedTask(week))
+					completedTasks+=task.LengthOfTask();
 			}
 		}
-		System.out.println("Task with this name:" + name + " is not registered in this project.");// otherwise we print a
-																								// message
-		return null;
+		completedPercentage=allTasks/completedTasks;
+		return completedPercentage;
 	}
 	public double earnedValue(int current_week) {
 		
 		double earned_value=0;
-		Task task=retrieveNotCompletedTask(current_week);
-		//String name= task.getName();
-		int serial_number=task.getSerial_number();
-		double completed_work=this.getNumberOfTasks()/serial_number;
+		double completed_work=retrieveCompletedPercentage(current_week);
+		
 		earned_value=this.budget*completed_work;
 		return earned_value;
 		

@@ -10,7 +10,7 @@ public class Io {
 	}
 	
 	public void printMainMenu(){
-		System.out.println("Actions");
+		System.out.println("==============MAIN MENU==============");
 		System.out.println("1 - Manipulate Projects");
 		System.out.println("2 - Manipulate Members");
 		System.out.println("3 - Print all Projects");
@@ -21,7 +21,7 @@ public class Io {
 	}
 	
 	public void printProjectsMenu() {
-		System.out.println("Actions");
+		System.out.println("==============PROJECT MENU==============");
 		System.out.println("1 - Add a Project");
 		System.out.println("2 - Remove a Project");
 		System.out.println("3 - Edit a Project");
@@ -31,7 +31,7 @@ public class Io {
 	}
 	
 	public void printMembersMenu() {
-		System.out.println("Actions");
+		System.out.println("==============MEMBER MENU==============");
 		System.out.println("1 - Add a Member");
 		System.out.println("2 - Remove a Member");
 		System.out.println("3 - Edit a Member");
@@ -41,7 +41,7 @@ public class Io {
 	}
 	
 	public void printEditProjectMenu() {
-		System.out.println("Select attribute to edit");
+		System.out.println("==============SELECT AN OPTION TO EDIT==============");
 		System.out.println("1 - Name");
 		System.out.println("2 - Description");
 		System.out.println("3 - Duration");
@@ -52,7 +52,7 @@ public class Io {
 	}
 	
 	public void printEditPersonMenu() {
-		System.out.println("Select attribute to edit");
+		System.out.println("==============SELECT AN OPTION TO EDIT==============");
 		System.out.println("1 - Name");
 		System.out.println("2 - Age");
 		System.out.println("3 - GO BACK");
@@ -60,19 +60,19 @@ public class Io {
 	}
 	
 	public void printProjectExistsError() {
-		System.out.println("ERROR: The project already exists!");
+		System.err.println("ERROR: The project already exists!");
 	}
 	
 	public void printProjectNotExistsError() {
-		System.out.println("ERROR: The project already exists!");
+		System.err.println("ERROR: The project already exists!");
 	}
 	
 	public void printPersonExistsError() {
-		System.out.println("ERROR: The person already exists!");
+		System.err.println("ERROR: The person already exists!");
 	}
 	
 	public void printPersonNotExistsError() {
-		System.out.println("ERROR: The person does not exists!");
+		System.err.println("ERROR: The person does not exists!");
 	}
 	
 	public int getInteger() {
