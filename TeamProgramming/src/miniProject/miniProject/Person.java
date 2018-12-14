@@ -5,12 +5,13 @@ public class Person {
 	private String ID;
 	private String name;
 	private int age;
-	private final int Salary = 15000;// add fixed salary
+	private double salary;
 
-	public Person(String ID, String name, int age) {
+	public Person(String ID, String name, int age, double salary) {
 		this.ID = ID;
 		this.name = name;
 		this.age = age;
+		this.salary = salary; 
 	}
 
 	public int timePerProject() {
@@ -49,7 +50,7 @@ public class Person {
 		String info = "ID of a person: " + this.ID + END_OF_LINE;
 		info += "Name: " + this.name + END_OF_LINE;
 		info += "Age: " + this.age + " years" + END_OF_LINE;
-		info += "Salary: " + this.Salary + " SEK per month" + END_OF_LINE;
+		info += "Salary: " + this.salary + " SEK per month" + END_OF_LINE;
 
 
 		return info;
