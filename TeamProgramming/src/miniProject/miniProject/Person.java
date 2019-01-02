@@ -1,4 +1,4 @@
-package miniProject;
+//package miniProject;
 
 public class Person {
 	
@@ -25,6 +25,8 @@ public class Person {
 		// project.
 		return 0;
 	}
+	
+	//need get salary
 	
 	public String getID() {
 		return this.ID;
