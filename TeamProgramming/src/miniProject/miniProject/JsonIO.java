@@ -1,4 +1,4 @@
-package miniProject;
+//package miniProject;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,21 +12,27 @@ public class JsonIO
 {
 	private String PersonPath="/Users/arvin/Desktop/Persons.json";
 	private String ProjectPath="/Users/arvin/Desktop/Projects.json";
+	private String TaskPath="/Users/arvin/Desktop/Tasks.json";
 	
 	private Set<String> PersonKeys;
 	private Set<String> ProjectKeys;
+	private Set<String> TaskKeys;
 	static JSONObject PersonJson = new JSONObject();
 	static JSONObject ProjectJson = new JSONObject();
+	static JSONObject TaskJson = new JSONObject();
 	private ArrayList<Person> personArrayList;
 	private ArrayList<Project> projectArrayList;
+	private ArrayList<Task> taskArrayList;
 
-	public JsonIO(String PersonPath,String ProjectPath) throws Exception 
+	public JsonIO(String PersonPath,String ProjectPath,String TaskPath) throws Exception 
 	{
 		this.PersonPath=PersonPath;
 		this.ProjectPath=ProjectPath;
+		this.TaskPath=TaskPath;
 		try {
 			PersonJson=(JSONObject) readJson(PersonPath);
 			ProjectJson=(JSONObject) readJson(ProjectPath);
+			TaskJson=(JSONObject) readJson(TaskPath);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -40,7 +46,7 @@ public class JsonIO
 		PersonKeys=PersonJson.keySet();
 		for (String Key : PersonKeys) 
 		{
-		    Person p=new Person(Key,(String) ((JSONObject) PersonJson.get(Key)).get("name"),((Long) ((JSONObject) PersonJson.get(Key)).get("age")).intValue());
+		    Person p=new Person(Key,(String) ((JSONObject) PersonJson.get(Key)).get("name"),((Long) ((JSONObject) PersonJson.get(Key)).get("age")).intValue(),(Double) ((JSONObject) PersonJson.get(Key)).get("salary"));
 		    personArrayList.add(p);
 		}
 		return personArrayList;
@@ -55,10 +61,23 @@ public class JsonIO
 		{
 			Project p=new Project(Key,(String)((JSONObject) PersonJson.get(Key)).get("name"),(String)((JSONObject) PersonJson.get(Key)).get("desc"),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("duration")).intValue(),((Long) ((JSONObject) PersonJson.get(Key)).get("budget")).intValue(),
-					((Long) ((JSONObject) PersonJson.get(Key)).get("RoI")).intValue(),(ArrayList<PersonTime>)(((JSONObject) PersonJson.get(Key)).get("times")));
+					((Long) ((JSONObject) PersonJson.get(Key)).get("RoI")).intValue(),0);
 			projectArrayList.add(p);
 		}
 		return projectArrayList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Task> returnTaskList()
+	{
+		taskArrayList=new ArrayList<Task>();
+		TaskKeys=TaskJson.keySet();
+		for (String Key : TaskKeys) 
+		{
+		    Task t=new Task(Key,((Long) ((JSONObject) TaskJson.get(Key)).get("start_week")).intValue(),((Long) ((JSONObject) TaskJson.get(Key)).get("end_week")).intValue(),((Long) ((JSONObject) TaskJson.get(Key)).get("serial_number")).intValue());
+		    taskArrayList.add(t);
+		}
+		return taskArrayList;
 	}
 	
 	
@@ -68,6 +87,7 @@ public class JsonIO
 		JSONObject PersonObj = new JSONObject();
 		PersonObj.put("name",p.getName());
 		PersonObj.put("age",p.getAge());
+		PersonObj.put("salary", p.getSalary());
 		if(!personExists(p))
 			PersonJson.put(p.getID(),PersonObj);
 	}
@@ -86,6 +106,17 @@ public class JsonIO
 			ProjectJson.put(p.getID(), ProjectObj);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public void addTask(Task t)
+	{
+		JSONObject TaskObj = new JSONObject();
+		TaskObj.put("start_week",t.getStart_week());
+		TaskObj.put("end_week",t.getEnd_week());
+		TaskObj.put("serial_number", t.getSerial_number());
+		if(!taskExists(t))
+			TaskJson.put(t.getTaskName(),TaskObj);
+	}
+	
 	private boolean personExists(Person p)
 	{
 		return PersonJson.containsKey(p.getID());
@@ -94,6 +125,11 @@ public class JsonIO
 	private boolean projectExists(Project p)
 	{
 		return ProjectJson.containsKey(p.getID());
+	}
+	
+	private boolean taskExists(Task t)
+	{
+		return TaskJson.containsKey(t.getTaskName());
 	}
 	
 	
@@ -107,6 +143,12 @@ public class JsonIO
 	{
 		if(projectExists(p))
 			ProjectJson.remove(p.getID());
+	}
+	
+	public void removeTask(Task t)
+	{
+		if(taskExists(t))
+			ProjectJson.remove(t.getTaskName());
 	}
 	
 	
@@ -130,6 +172,19 @@ public class JsonIO
 	    	file.write(ProjectJson.toJSONString());
 			System.out.println("Successfully Copied Person JSON Object to File...");
 			System.out.println("\nJSON Object: " + ProjectJson);
+		} catch (IOException e) 
+	    {
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveTask()
+	{
+	    try (FileWriter file = new FileWriter(TaskPath)) 
+	    {
+	    	file.write(TaskJson.toJSONString());
+			System.out.println("Successfully Copied Person JSON Object to File...");
+			System.out.println("\nJSON Object: " + TaskJson);
 		} catch (IOException e) 
 	    {
 			e.printStackTrace();
