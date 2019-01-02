@@ -1,4 +1,4 @@
-package miniProject;
+
 
 public class PersonTime {
 	private String ID; //Id of the person

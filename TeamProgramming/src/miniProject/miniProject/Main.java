@@ -1,8 +1,6 @@
-package miniProject;
+
 
 import java.util.ArrayList;
-
-import miniProject.Task;
 
 public class Main{
 	ArrayList<Project> projects;
@@ -36,7 +34,7 @@ public class Main{
 			case 1:
 				
 				String id,name,desc;
-				int duration,budget,RoI,age;
+				int duration,budget,RoI,age,salary,time;
 				
 				io.printProjectsMenu();
 				projectsMenuChoice = io.getInteger();
@@ -62,7 +60,10 @@ public class Main{
 						System.out.println("Insert RoI:");
 						RoI = io.getInteger();
 						
-						createProject(id,name,desc,duration,budget,RoI);
+						System.out.println("Insert time:");
+						time = io.getInteger();
+						
+						createProject(id,name,desc,duration,budget,RoI, time);
 						System.out.println("Project created");
 					}else {
 						io.printProjectExistsError();
@@ -159,7 +160,10 @@ public class Main{
 							System.out.println("Insert age:");
 							age = io.getInteger();
 							
-							createPerson(id,name,age);
+							System.out.println("Insert salary:");
+							salary = io.getInteger();
+							
+							createPerson(id,name,age,salary);
 							System.out.println("Person created");
 						}else {
 							io.printPersonExistsError();
@@ -245,8 +249,8 @@ public class Main{
 		}while(mainMenuChoice!=6);
 	}
 	
-	public boolean createPerson(String ID, String name, int age) {
-		Person person = new Person(ID, name, age);
+	public boolean createPerson(String ID, String name, int age, double salary) {
+		Person person = new Person(ID, name, age, salary);
 		
 		if(retrievePerson(ID)==null) {
 			this.people.add(person);
@@ -314,8 +318,8 @@ public class Main{
 		}
 	
 	//createProject is Done
-	public void createProject(String ID, String name, String desc, int duration, int budget, int RoI) {
-		Project project = new Project(ID, name, desc, duration, budget, RoI);
+	public void createProject(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
+		Project project = new Project(ID, name, desc, duration, budget, RoI, time);
 		
 		if(retrieveProject(ID)==null) {
 			this.projects.add(project);

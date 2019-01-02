@@ -1,4 +1,4 @@
-package miniProject;
+
 
 import java.util.ArrayList;
 
@@ -11,12 +11,9 @@ public class Project {
 	private int budget;
 	private int RoI;
 	private ArrayList<PersonTime> times; // should be array with each member and their time
-	//private ArrayList<Task> tasks; //TODO
+	private ArrayList<Task> tasks;
 
-	
-	ArrayList<Task> tasks;
-
-	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
+	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int times) {
 		this.ID = ID;
 		this.name = name;
 		this.desc = desc;
@@ -37,13 +34,8 @@ public class Project {
 	public double scheduleVariance(int current_week) {
 		
 		return (this.earnedValue(current_week)-this.plannedValue(current_week));
-		
-		/*
-		 * this method should return the schedule variance the schedule variance =
-		 * budgeted cost of the work performed - budgeted cost of work scheduled
-		 */
 
-		return 0;
+
 	}
 	public double plannedValue(int current_week) {
 		
@@ -55,9 +47,11 @@ public class Project {
 		return plannedValue;
 		
 	}
+	public ArrayList<PersonTime> timePerMember() {
+		return this.times;
+	}
+
 	public boolean updateTime(String personID, int time) {
-		//The method goes through each couple of PersonID and time spent in the project
-		//and if the ID is found then the time is updated and the method returns true
 		boolean found = false;
 		for(PersonTime couple : this.times) {
 			if(personID.equals(couple.getID())) {
@@ -69,7 +63,7 @@ public class Project {
 	}
 	
 	public void createTask(String name, int start_week,int end_week,int sn) {
-
+		this.tasks = new ArrayList<>();
 		Task task = new Task(name, start_week, end_week,sn);
 		this.tasks.add(task);
 	}
@@ -102,25 +96,31 @@ public class Project {
 		
 		earned_value=this.budget*completed_work;
 		return earned_value;
+
+	}
+	
+	public int[] scheduleActivity(int position) {
+		int startWeek = this.tasks.get(position).getStart_week();
+		int endWeek = this.tasks.get(position).getEnd_week();
 		
-		/*
-		 * this method should return the earned value = % of completed
-		 * work / budget at completion (BAC)
-		 */
+		return new int[] {startWeek, endWeek};
 	}
 	
-	public String scheduleActivity() {
-		/*
-		 * this method will return the project's schedule and planned activity.
-		 * it should return the start week and end week of the project
-		 */
-		return null;
+	public String riskMatrix(int probability, int impact) {
+		
+		int riskMatrix = probability * impact;
+		
+		if (riskMatrix > 3) {
+			if (riskMatrix > 7) {
+				if (riskMatrix > 11) {
+					return "Dangerous";
+				}
+				return "High";
+			}
+			return "Medium";
+		}	
+		return "Safe";
 	}
-	
-	
-	//Risk Matrix method; think about this!!!
-	
-	
 
 	public String getID() {
 		return this.ID;
@@ -138,7 +138,7 @@ public class Project {
 		return this.duration;
 	}
 
-	public int getbudget() {
+	public int getBudget() {
 		return this.budget;
 	}
 
@@ -146,9 +146,6 @@ public class Project {
 		return this.RoI;
 	}
 
-	public int getTime() {
-		return this.time;
-	}
 	public ArrayList<PersonTime> getTimes(){
 		return this.times;
 	}

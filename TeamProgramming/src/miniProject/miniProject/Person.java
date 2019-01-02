@@ -1,4 +1,4 @@
-package miniProject;
+
 
 public class Person {
 	
@@ -12,18 +12,6 @@ public class Person {
 		this.name = name;
 		this.age = age;
 		this.salary = salary; 
-	}
-
-	public int timePerProject() {
-		// this method should return members individual time contribution on all
-		// projects.
-		return 0;
-	}
-
-	public int timePerMember() {
-		// this method should return each members individual time contributed on the
-		// project.
-		return 0;
 	}
 	
 	public String getID() {

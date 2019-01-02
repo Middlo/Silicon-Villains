@@ -1,4 +1,3 @@
-package miniProject;
 
 public class Task {
 	private String name;
