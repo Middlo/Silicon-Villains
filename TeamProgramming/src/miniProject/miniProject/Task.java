@@ -1,4 +1,4 @@
-package miniProject;
+//package miniProject;
 
 public class Task {
 	private String name;
@@ -24,7 +24,8 @@ public class Task {
 	}
 	public String getTaskName() {
 		return name;
-	}
+	} 
+	//getter and setter have different names(getTaskName and setTaskName maybe?)
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -54,6 +55,4 @@ public class Task {
 				"End Week: " + this.end_week + "\n" +
 				"===========================\n" ;
 	}
-
-
 }

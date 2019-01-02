@@ -1,4 +1,4 @@
-package miniProject;
+//package miniProject;
 
 import java.util.ArrayList;
 
@@ -43,7 +43,7 @@ public class Project {
 		 * budgeted cost of the work performed - budgeted cost of work scheduled
 		 */
 
-		return 0;
+		//return 0;(Arvin: this return causes an error)
 	}
 	public double plannedValue(int current_week) {
 		
@@ -137,7 +137,7 @@ public class Project {
 	public int getDuration() {
 		return this.duration;
 	}
-
+	//getbudget should have capital B.
 	public int getbudget() {
 		return this.budget;
 	}
@@ -147,7 +147,8 @@ public class Project {
 	}
 
 	public int getTime() {
-		return this.time;
+		//return this.time;
+		return 1;//(Arvin: there is no time attribute(fix?))
 	}
 	public ArrayList<PersonTime> getTimes(){
 		return this.times;
@@ -185,4 +186,3 @@ public class Project {
 	}
 
 }
-
