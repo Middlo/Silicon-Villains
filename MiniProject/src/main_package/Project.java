@@ -138,6 +138,7 @@ public class Project {
 	public void addTime(String ID, int time) {
 		PersonTime couple = new PersonTime(ID,time);
 		this.times.add(couple);
+		System.out.println("Added "+couple+" To the array of TIMES");
 	}
 	
 	public void removeTime(String ID) {
@@ -223,6 +224,15 @@ public class Project {
 		projectInfo += "Decription: " + this.desc + END_OF_LINE;
 		projectInfo += "Duration: " + this.duration + END_OF_LINE;
 		projectInfo += "Budget: " + this.budget + " SEK per month" + END_OF_LINE;
+		projectInfo += "********* Extra Info *********" + END_OF_LINE;
+		projectInfo += END_OF_LINE + "Group members:" + END_OF_LINE;
+		if(this.times.size()==0) {
+			projectInfo += "None" + END_OF_LINE;
+		}else {
+			for(PersonTime each : this.times) {
+				projectInfo += "Member " + each.getID() + " spent " + each.getTime() + " minutes" + END_OF_LINE;
+			}
+		}
 		
 		return projectInfo;
 	}

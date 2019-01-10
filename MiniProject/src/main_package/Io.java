@@ -14,10 +14,11 @@ public class Io {
 		System.out.println("==============MAIN MENU==============");
 		System.out.println("1 - Manipulate Projects");
 		System.out.println("2 - Manipulate Members");
-		System.out.println("3 - Print all Projects");
-		System.out.println("4 - Print all Members");
-		System.out.println("5 - Save data to files");
-		System.out.println("6 - EXIT");
+		System.out.println("3 - * Features *");
+		System.out.println("4 - Print all Projects");
+		System.out.println("5 - Print all Members");
+		System.out.println("6 - Save data to files");
+		System.out.println("7 - EXIT");
 		System.out.print("Choice: ");
 	}
 	
@@ -39,6 +40,15 @@ public class Io {
 		System.out.println("4 - View a Member");
 		System.out.println("5 - GO BACK");
 		System.out.print("Choice: ");
+	}
+	
+	public void printFeaturesMenu() {
+		System.out.println("==============FEATURES MENU==============");
+		System.out.println("1 - Cost Variance");
+		System.out.println("2 - Schedule Variance");
+		System.out.println("3 - Earned Value");
+		System.out.println("1 - Cost Variance");
+		
 	}
 	
 	public void printEditProjectMenu() {

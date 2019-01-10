@@ -255,20 +255,24 @@ public class Main{
 				}while(memberMenuChoice!=5);
 					break;
 			case 3:
+			//FEATURES
+				io.printFeaturesMenu();
+				break;
+			case 4:
 			//PRINT EACH PROJECT
 				
 				for(Project each : this.projects) {
 					System.out.println(each);
 				}
 				break;
-			case 4:
+			case 5:
 			//PRINT EACH MEMBER
 				
 				for(Person each : this.people) {
 					System.out.println(each);
 				}
 				break;
-			case 5:
+			case 6:
 			//SAVE ALL TO FILE
 				
 				jsonio.savePerson();
@@ -276,7 +280,7 @@ public class Main{
 				System.out.println("Saved Projects and People to file!");
 				break;
 			}
-		}while(mainMenuChoice!=6);
+		}while(mainMenuChoice!=7);
 	}
 	
 	public boolean createPerson(String ID, String name, int age, double salary) {
@@ -352,7 +356,7 @@ public class Main{
 	}
 	
 	//updatePersonAge is Done
-		public boolean updatePersonAge(String ID,int newAge) {
+	public boolean updatePersonAge(String ID,int newAge) {
 			//Returns true if the name is successfully edited, returns false if not
 			Person foundPerson= retrievePerson(ID);
 			if(foundPerson != null) {

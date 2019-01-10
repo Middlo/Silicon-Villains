@@ -2,7 +2,12 @@ package main_package;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
+
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import java.io.FileWriter;
@@ -70,7 +75,7 @@ public class JsonIO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void addProject(Project p) {
+	public void addProject(Project p) {	
 		JSONObject ProjectObj = new JSONObject();
 		ProjectObj.put("name", p.getName());
 		ProjectObj.put("desc", p.getDesc());
