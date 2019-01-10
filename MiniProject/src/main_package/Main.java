@@ -21,7 +21,7 @@ public class Main{
 	
 	public void run() {
 		
-		int mainMenuChoice,projectsMenuChoice,memberMenuChoice,editProjectMenuChoice,editPersonMenuChoice;
+		int mainMenuChoice,projectsMenuChoice,memberMenuChoice,featuresMenuChoice,editProjectMenuChoice,editPersonMenuChoice,week;
 		Person foundPerson;
 		Project foundProject;
 		
@@ -256,7 +256,41 @@ public class Main{
 					break;
 			case 3:
 			//FEATURES
-				io.printFeaturesMenu();
+				do {
+					System.out.println("Insert ID of the project you want to operate with:");
+					id = io.getString();
+					foundProject = retrieveProject(id);
+					if(foundProject==null){
+						io.printProjectNotExistsError();
+					}
+				}while(foundProject==null);
+				
+				do {
+					io.printFeaturesMenu();
+					featuresMenuChoice = io.getInteger();
+					
+					switch (featuresMenuChoice) {
+					case 1:
+						System.out.println("Insert the current week:");
+						week = io.getInteger();
+						System.out.println("Cost Variance until week " + week + ": " + foundProject.costVariance(week));
+						break;
+					case 2:
+						System.out.println("Insert the current week:");
+						week = io.getInteger();
+						System.out.println("Schedule Variance until week " + week + ": " + foundProject.scheduleVariance(week));
+						break;
+					case 3:
+						System.out.println("Insert the current week:");
+						week = io.getInteger();
+						System.out.println("Earned Value until week " + week + ": " + foundProject.earnedValue(week));
+						break;
+					case 4:
+						break;
+					case 5:
+						break;
+					}
+				}while(featuresMenuChoice!=6);
 				break;
 			case 4:
 			//PRINT EACH PROJECT

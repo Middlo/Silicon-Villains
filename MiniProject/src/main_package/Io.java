@@ -47,8 +47,9 @@ public class Io {
 		System.out.println("1 - Cost Variance");
 		System.out.println("2 - Schedule Variance");
 		System.out.println("3 - Earned Value");
-		System.out.println("1 - Cost Variance");
-		
+		System.out.println("4 - Project Schedule");
+		System.out.println("5 - Risk Matrix");
+		System.out.println("6 - GO BACk");
 	}
 	
 	public void printEditProjectMenu() {
