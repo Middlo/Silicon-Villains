@@ -198,7 +198,6 @@ public class Main{
 						id = io.getString();
 						
 						if(retrievePerson(id)!=null) {
-							//TODO Remove link between project and member
 							if(removeTime(id)) {
 								System.out.println("Link removed");
 							}else {
@@ -271,16 +270,19 @@ public class Main{
 					
 					switch (featuresMenuChoice) {
 					case 1:
+					//COST VARIANCE
 						System.out.println("Insert the current week:");
 						week = io.getInteger();
 						System.out.println("Cost Variance until week " + week + ": " + foundProject.costVariance(week));
 						break;
 					case 2:
+					//SCHEDULE VARIANCE
 						System.out.println("Insert the current week:");
 						week = io.getInteger();
 						System.out.println("Schedule Variance until week " + week + ": " + foundProject.scheduleVariance(week));
 						break;
 					case 3:
+					//EARNED VALUE
 						System.out.println("Insert the current week:");
 						week = io.getInteger();
 						System.out.println("Earned Value until week " + week + ": " + foundProject.earnedValue(week));

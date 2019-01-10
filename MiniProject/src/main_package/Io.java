@@ -49,7 +49,7 @@ public class Io {
 		System.out.println("3 - Earned Value");
 		System.out.println("4 - Project Schedule");
 		System.out.println("5 - Risk Matrix");
-		System.out.println("6 - GO BACk");
+		System.out.println("6 - GO BACK");
 	}
 	
 	public void printEditProjectMenu() {
@@ -76,7 +76,7 @@ public class Io {
 	}
 	
 	public void printProjectNotExistsError() {
-		System.err.println("ERROR: The project already exists!");
+		System.err.println("ERROR: The project does not exist!");
 	}
 	
 	public void printPersonExistsError() {

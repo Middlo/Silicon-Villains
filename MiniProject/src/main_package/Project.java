@@ -224,7 +224,7 @@ public class Project {
 		projectInfo += "Decription: " + this.desc + END_OF_LINE;
 		projectInfo += "Duration: " + this.duration + END_OF_LINE;
 		projectInfo += "Budget: " + this.budget + " SEK per month" + END_OF_LINE;
-		projectInfo += "********* Extra Info *********" + END_OF_LINE;
+		projectInfo += END_OF_LINE + "********* Extra Info *********";
 		projectInfo += END_OF_LINE + "Group members:" + END_OF_LINE;
 		if(this.times.size()==0) {
 			projectInfo += "None" + END_OF_LINE;
