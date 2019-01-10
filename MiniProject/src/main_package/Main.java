@@ -33,15 +33,17 @@ public class Main{
 			
 			switch (mainMenuChoice) {
 			case 1:
+			//PROJECT MANIPULATION
 				
-				String id,name,desc;
+				String id,name,desc,projectId;
 				int duration,budget,RoI,age,salary,time;
 				
 				io.printProjectsMenu();
 				projectsMenuChoice = io.getInteger();
 				switch (projectsMenuChoice) {
 				case 1:
-					//Add					
+				//ADD PROJECT	
+					
 					System.out.println("Insert ID:");
 					id = io.getString();
 					
@@ -71,7 +73,7 @@ public class Main{
 					}
 					break;
 				case 2:
-					//Remove
+				//REMOVE PROJECT
 					
 					System.out.println("Insert ID:");
 					id = io.getString();
@@ -84,7 +86,7 @@ public class Main{
 					}
 					break;
 				case 3:
-					//Edit
+				//EDIT PROJECT
 					
 					System.out.println("Insert ID:");
 					id = io.getString();
@@ -128,7 +130,7 @@ public class Main{
 					}
 					break;
 				case 4:
-					//View
+				//VIEW PROJECT
 					
 					System.out.println("Insert ID:");
 					id = io.getString();
@@ -145,38 +147,66 @@ public class Main{
 				
 				break;
 			case 2:
+			//MEMBER MANIPULATION
+				
 				do {
 					io.printMembersMenu();
 					memberMenuChoice = io.getInteger();
 					switch (memberMenuChoice) {
 					case 1:
-						//Add					
+					//ADD MEMBER					
+						
 						System.out.println("Insert ID:");
 						id = io.getString();
 						
 						if(retrievePerson(id)==null) {
-							System.out.println("Insert name:");
-							name = io.getString();
-							
-							System.out.println("Insert age:");
-							age = io.getInteger();
-							
-							System.out.println("Insert salary:");
-							salary = io.getInteger();
-							
-							createPerson(id,name,age,salary);
-							System.out.println("Person created");
+							System.out.println("Insert ID of the project this member is part of:");
+							projectId = io.getString();
+							Project linkedProject = retrieveProject(projectId);
+							if(linkedProject!=null) {
+								//Here the member is linked to the project by
+								//adding the ID of the member and the time spent in the project
+								//(0 in this case because the member is yet to create)
+								//by creating an object of type PersonTime and pushing it into the
+								//array "times" of type PersonTime in the object of type Project
+								//-----
+								//See how an Object of type Project is structured
+								
+								linkedProject.addTime(id,0);
+								
+								System.out.println("Insert name:");
+								name = io.getString();
+								
+								System.out.println("Insert age:");
+								age = io.getInteger();
+								
+								System.out.println("Insert salary:");
+								salary = io.getInteger();
+								
+								createPerson(id,name,age,salary);
+								System.out.println("Person created");
+							}else {
+								System.out.println("Project " + projectId + " does not exist!");
+								System.out.println("Aborting member creation...");
+							}
 						}else {
 							io.printPersonExistsError();
 						}
 						
 						break;
 					case 2:
-						//Remove					
+					//REMOVE MEMBER
+						
 						System.out.println("Insert ID:");
 						id = io.getString();
 						
 						if(retrievePerson(id)!=null) {
+							//TODO Remove link between project and member
+							if(removeTime(id)) {
+								System.out.println("Link removed");
+							}else {
+								System.out.println("Couldn't remove link");
+							}
 							removePerson(id);
 							System.out.println("Person removed");
 						}else {
@@ -184,9 +214,8 @@ public class Main{
 						}
 						break;
 					case 3:
-						//Edit
+					//EDIT MEMBER
 						
-	
 						System.out.println("Insert ID:");
 						id = io.getString();
 						
@@ -212,7 +241,7 @@ public class Main{
 						}
 						break;
 					case 4:
-						//View
+					//VIEW MEMBER
 						
 						System.out.println("Insert ID:");
 						id = io.getString();
@@ -229,19 +258,22 @@ public class Main{
 				}while(memberMenuChoice!=5);
 					break;
 			case 3:
-				//Print
+			//PRINT EACH PROJECT
+				
 				for(Project each : this.projects) {
 					System.out.println(each);
 				}
 				break;
 			case 4:
-				//Print
+			//PRINT EACH MEMBER
+				
 				for(Person each : this.people) {
 					System.out.println(each);
 				}
 				break;
 			case 5:
-				//Save
+			//SAVE ALL TO FILE
+				
 				jsonio.savePerson();
 				jsonio.saveProject();
 				System.out.println("Saved Projects and People to file!");
@@ -260,6 +292,22 @@ public class Main{
 		}else {
 			return false;
 		}
+	}
+	
+	public boolean removeTime(String ID) {
+		//Function that removes the link between a Project and a Member
+		//by deleting the object of type PersonTime in the ArrayList times
+		//which is an attribute of the Project
+		//------
+		//This is called on deletion of a member to delete the unnecessary 
+		//link between the Project and the deleted member
+		for(Project each : this.projects) {
+			if(each.hasMember(ID)) {
+				each.removeTime(ID);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean removePerson(String ID) {

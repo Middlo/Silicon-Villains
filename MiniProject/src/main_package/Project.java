@@ -122,6 +122,34 @@ public class Project {
 		}	
 		return "Safe";
 	}
+	
+	public void addTime(String ID, int time) {
+		PersonTime couple = new PersonTime(ID,time);
+		this.times.add(couple);
+	}
+	
+	public void removeTime(String ID) {
+		//Function called to remove the element in the ArrayList times (attribute of a project)
+		//that has as ID of the member the given "ID"
+		PersonTime toRemove = null;
+		for(PersonTime each : this.times) {
+			if(each.getID().equals(ID)) {
+				toRemove = each;
+			}
+		}
+		times.remove(toRemove);
+	}
+	
+	public boolean hasMember(String ID) {
+		//Function that returns true if the member with id "ID" is present
+		//in the ArrayList times (attribute of a project)
+		for(PersonTime each : this.times) {
+			if(each.getID().equals(ID)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public String getID() {
 		return this.ID;
@@ -170,6 +198,7 @@ public class Project {
 	public void setRoI(int roI) {
 		RoI = roI;
 	}
+	
 	public String toString() {
 
 		final String END_OF_LINE = System.lineSeparator();
