@@ -8,8 +8,8 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileWriter;
 
 public class JsonIO {
-	private String PersonPath = "/Users/arvin/Desktop/Persons.json";
-	private String ProjectPath = "/Users/arvin/Desktop/Projects.json";
+	private String PersonPath = "/Users/public/Persons.json";
+	private String ProjectPath = "/Users/public/Projects.json";
 
 	private Set<String> PersonKeys;
 	private Set<String> ProjectKeys;

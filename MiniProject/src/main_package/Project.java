@@ -173,8 +173,8 @@ public class Project {
 	public String toString() {
 
 		final String END_OF_LINE = System.lineSeparator();
-		String projectInfo = "ID of a person: " + this.ID + END_OF_LINE;
-		projectInfo += "Name Of Project: " + this.name + END_OF_LINE;
+		String projectInfo = "Project with ID: " + this.ID + END_OF_LINE;
+		projectInfo += "Name: " + this.name + END_OF_LINE;
 		projectInfo += "Decription: " + this.desc + END_OF_LINE;
 		projectInfo += "Duration: " + this.duration + END_OF_LINE;
 		projectInfo += "Budget: " + this.budget + " SEK per month" + END_OF_LINE;
