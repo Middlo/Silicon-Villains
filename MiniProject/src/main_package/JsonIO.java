@@ -52,7 +52,9 @@ public class JsonIO {
 					((Long) ((JSONObject) PersonJson.get(Key)).get("duration")).intValue(),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("budget")).intValue(),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("RoI")).intValue(),
-					((int) (((JSONObject) PersonJson.get(Key)).get("times"))));
+					((ArrayList<PersonTime>) (((JSONObject) PersonJson.get(Key)).get("times"))),
+					((ArrayList<Task>) (((JSONObject) PersonJson.get(Key)).get("tasks")))
+					);
 			projectArrayList.add(p);
 		}
 		return projectArrayList;
@@ -76,6 +78,7 @@ public class JsonIO {
 		ProjectObj.put("budget", p.getBudget());
 		ProjectObj.put("RoI", p.getRoI());
 		ProjectObj.put("times", p.getTimes());
+		ProjectObj.put("tasks", p.getTasks());
 		if (!projectExists(p))
 			ProjectJson.put(p.getID(), ProjectObj);
 	}

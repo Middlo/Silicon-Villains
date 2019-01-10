@@ -63,10 +63,7 @@ public class Main{
 						System.out.println("Insert RoI:");
 						RoI = io.getInteger();
 						
-						System.out.println("Insert time:");
-						time = io.getInteger();
-						
-						createProject(id,name,desc,duration,budget,RoI, time);
+						createProject(id,name,desc,duration,budget,RoI);
 						System.out.println("Project created");
 					}else {
 						io.printProjectExistsError();
@@ -367,8 +364,8 @@ public class Main{
 		}
 	
 	//createProject is Done
-	public void createProject(String ID, String name, String desc, int duration, int budget, int RoI, int time) {
-		Project project = new Project(ID, name, desc, duration, budget, RoI, time);
+	public void createProject(String ID, String name, String desc, int duration, int budget, int RoI) {
+		Project project = new Project(ID, name, desc, duration, budget, RoI);
 		
 		if(retrieveProject(ID)==null) {
 			this.projects.add(project);

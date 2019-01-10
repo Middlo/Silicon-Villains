@@ -14,7 +14,7 @@ public class Project {
 	private ArrayList<PersonTime> times; // should be array with each member and their time
 	private ArrayList<Task> tasks;
 
-	public Project(String ID, String name, String desc, int duration, int budget, int RoI, int times) {
+	public Project(String ID, String name, String desc, int duration, int budget, int RoI) {
 		this.ID = ID;
 		this.name = name;
 		this.desc = desc;
@@ -22,6 +22,18 @@ public class Project {
 		this.budget = budget;
 		this.RoI = RoI;
 		this.times = new ArrayList<>();
+		this.tasks = new ArrayList<>();
+	}
+	
+	public Project(String ID, String name, String desc, int duration, int budget, int RoI, ArrayList<PersonTime> times, ArrayList<Task> tasks) {
+		this.ID = ID;
+		this.name = name;
+		this.desc = desc;
+		this.duration = duration;
+		this.budget = budget;
+		this.RoI = RoI;
+		this.times = times;
+		this.tasks = tasks;
 	}
 
 	public double costVariance(int current_week) {
@@ -177,6 +189,10 @@ public class Project {
 
 	public ArrayList<PersonTime> getTimes(){
 		return this.times;
+	}
+	
+	public ArrayList<Task> getTasks(){
+		return this.tasks;
 	}
 
 	public void setName(String name) {
