@@ -181,6 +181,10 @@ public class Main{
 								salary = io.getInteger();
 								
 								createPerson(id,name,age,salary);
+								System.out.println("PRE" +linkedProject.getTimes());
+								jsonio.updateTimes(projectId, linkedProject);
+								System.out.println("AFTER" +linkedProject.getTimes());
+								
 								System.out.println("Person created");
 							}else {
 								System.out.println("Project " + projectId + " does not exist!");

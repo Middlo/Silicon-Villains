@@ -2,13 +2,11 @@ package main_package;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Set;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import java.io.FileWriter;
 
@@ -52,13 +50,26 @@ public class JsonIO {
 		projectArrayList = new ArrayList<Project>();
 		ProjectKeys = ProjectJson.keySet();
 		for (String Key : ProjectKeys) {
+			
+			PersonTime[] timesArray = (PersonTime[])((JSONObject) PersonJson.get(Key)).get("times");
+			//The simple array is read from the file 
+			ArrayList<PersonTime> times = new ArrayList<PersonTime>(Arrays.asList(timesArray));
+			//The simple array is converted into ArrayList and saved
+			//Same process below...
+			Task[] tasksArray = (Task[])((JSONObject) PersonJson.get(Key)).get("tasks");
+			ArrayList<Task> tasks = new ArrayList<Task>(Arrays.asList(tasksArray));
+			
+			//Because an ArrayList can't be stored in a JSON file
+			//the simple arrays stored in the JSON file are converted into an arraylist
+			//and put in an object of type Project
+			
 			Project p = new Project(Key, (String) ((JSONObject) PersonJson.get(Key)).get("name"),
 					(String) ((JSONObject) PersonJson.get(Key)).get("desc"),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("duration")).intValue(),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("budget")).intValue(),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("RoI")).intValue(),
-					((ArrayList<PersonTime>) (((JSONObject) PersonJson.get(Key)).get("times"))),
-					((ArrayList<Task>) (((JSONObject) PersonJson.get(Key)).get("tasks")))
+					(times),
+					(tasks)
 					);
 			projectArrayList.add(p);
 		}
@@ -77,13 +88,31 @@ public class JsonIO {
 	@SuppressWarnings("unchecked")
 	public void addProject(Project p) {	
 		JSONObject ProjectObj = new JSONObject();
+		
+		
+		//Because an ArrayList can't be stored in a JSON file
+		//the ArrayLists times and tasks are converted into simple arrays and stored
+		
+		ArrayList<PersonTime> timesList = p.getTimes();
+		System.out.println(timesList);
+		//PersonTime[] times = (PersonTime[]) timesList.toArray(new PersonTime[timesList.size()]);
+		
+		String times = JSONValue.toJSONString(timesList);
+		
+		ArrayList<Task> tasksList = p.getTasks();
+		//Task[] tasks = (Task[]) tasksList.toArray(new Task[tasksList.size()]);
+		
+		String tasks = JSONValue.toJSONString(tasksList);
+		
+		//-----
+		
 		ProjectObj.put("name", p.getName());
 		ProjectObj.put("desc", p.getDesc());
 		ProjectObj.put("duration", p.getDuration());
 		ProjectObj.put("budget", p.getBudget());
 		ProjectObj.put("RoI", p.getRoI());
-		ProjectObj.put("times", p.getTimes());
-		ProjectObj.put("tasks", p.getTasks());
+		ProjectObj.put("times", times);
+		ProjectObj.put("tasks", tasks);
 		if (!projectExists(p))
 			ProjectJson.put(p.getID(), ProjectObj);
 	}
@@ -131,5 +160,16 @@ public class JsonIO {
 		JSONParser jsonParser = new JSONParser();
 		return jsonParser.parse(reader);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public void updateTimes(String Key, Project p) {
+		JSONObject ProjectObj = ((JSONObject) ProjectJson.get(Key));
+		ArrayList<PersonTime> timesList = p.getTimes();
+		
+		String times = JSONValue.toJSONString(timesList);
+		
+		ProjectObj.put("times", times);
+		System.out.println("TIMES = "+times);
+		ProjectJson.put(Key, ProjectObj);
+	}
 }
