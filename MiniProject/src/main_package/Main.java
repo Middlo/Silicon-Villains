@@ -297,7 +297,7 @@ public class Main{
 						break;
 					case 5:
 					//RISK MATRIX
-						System.out.println("Insert risk name:")
+						System.out.println("Insert risk name:");
 						riskname = io.getString();
 					  System.out.println("Insert probablity level:");
 						probablity = io.getInteger();
