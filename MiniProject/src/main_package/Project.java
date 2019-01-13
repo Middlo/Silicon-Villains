@@ -121,7 +121,6 @@ public class Project {
 
 		final String END_OF_LINE = System.lineSeparator();
 		String projectSchedule = "Project Schedule" + END_OF_LINE;
-		projectSchedule += END_OF_LINE;
 		projectSchedule += "Task Name   " + "Start Week   " + "End Week   " + END_OF_LINE;
 		for (Task task : this.tasks) {
 			if (tasks != null) {
@@ -129,13 +128,14 @@ public class Project {
 						+ END_OF_LINE;
 			}
 		}
+		return projectSchedule;
 	}
 
 	public String riskMatrix(String risk_name, int probability, int impact) {
 
 		int riskMatrix = probability * impact;
 		String risk=null;
-		
+
 		if (riskMatrix > 3) {
 			if (riskMatrix > 7) {
 				if (riskMatrix > 11) {
@@ -144,15 +144,16 @@ public class Project {
 				risk="High";
 			}
 			risk="Medium";
-		}
-		risk="Safe";
-		
+		} else {
+		risk="Safe";}
+
+
 		final String END_OF_LINE = System.lineSeparator();
 		String rMatrix = "Risk Matrix" + END_OF_LINE;
 		rMatrix += END_OF_LINE;
 		rMatrix += "Risk Name   " +"Probability   "+"Impact   "+"Risk"+ END_OF_LINE;
 		rMatrix += risk_name+"   " +probability+"   "+impact+"   "+risk+ END_OF_LINE;
-		
+
 		return rMatrix;
 	}
 
