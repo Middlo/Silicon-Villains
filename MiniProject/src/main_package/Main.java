@@ -77,7 +77,7 @@ public class Main{
 
 					if(retrieveProject(id)!=null) {
 						removeProject(id);
-						System.out.println("Person removed");
+						System.out.println("Project removed");
 					}else {
 						io.printProjectNotExistsError();
 					}
