@@ -50,13 +50,25 @@ public class JsonIO {
 		projectArrayList = new ArrayList<Project>();
 		ProjectKeys = ProjectJson.keySet();
 		for (String Key : ProjectKeys) {
-			
-			PersonTime[] timesArray = (PersonTime[])((JSONObject) PersonJson.get(Key)).get("times");
+			PersonTime[] timesArray;
+			try {
+				timesArray = (PersonTime[])((JSONObject) PersonJson.get(Key)).get("times");
+			}
+			catch(NullPointerException e) {
+				timesArray = new PersonTime[0];
+			}
 			//The simple array is read from the file 
+			
 			ArrayList<PersonTime> times = new ArrayList<PersonTime>(Arrays.asList(timesArray));
 			//The simple array is converted into ArrayList and saved
 			//Same process below...
-			Task[] tasksArray = (Task[])((JSONObject) PersonJson.get(Key)).get("tasks");
+			Task[] tasksArray;
+			try{
+				tasksArray = (Task[])((JSONObject) PersonJson.get(Key)).get("tasks");
+			}
+			catch(NullPointerException e) {
+				tasksArray = new Task[0];
+			}
 			ArrayList<Task> tasks = new ArrayList<Task>(Arrays.asList(tasksArray));
 			
 			//Because an ArrayList can't be stored in a JSON file
@@ -71,6 +83,7 @@ public class JsonIO {
 					(times),
 					(tasks)
 					);
+			
 			projectArrayList.add(p);
 		}
 		return projectArrayList;
