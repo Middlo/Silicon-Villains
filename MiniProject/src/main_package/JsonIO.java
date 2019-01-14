@@ -52,7 +52,7 @@ public class JsonIO {
 		for (String Key : ProjectKeys) {
 			PersonTime[] timesArray;
 			try {
-				timesArray = (PersonTime[])((JSONObject) PersonJson.get(Key)).get("times");
+				timesArray = (PersonTime[])((JSONObject) ProjectJson.get(Key)).get("times");
 			}
 			catch(NullPointerException e) {
 				timesArray = new PersonTime[0];
@@ -64,7 +64,7 @@ public class JsonIO {
 			//Same process below...
 			Task[] tasksArray;
 			try{
-				tasksArray = (Task[])((JSONObject) PersonJson.get(Key)).get("tasks");
+				tasksArray = (Task[])((JSONObject) ProjectJson.get(Key)).get("tasks");
 			}
 			catch(NullPointerException e) {
 				tasksArray = new Task[0];
@@ -75,7 +75,7 @@ public class JsonIO {
 			//the simple arrays stored in the JSON file are converted into an arraylist
 			//and put in an object of type Project
 			
-			Project p = new Project(Key, (String) ((JSONObject) PersonJson.get(Key)).get("name"),
+			Project p = new Project(Key, (String) ((JSONObject) ProjectJson.get(Key)).get("name"),
 					(String) ((JSONObject) PersonJson.get(Key)).get("desc"),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("duration")).intValue(),
 					((Long) ((JSONObject) PersonJson.get(Key)).get("budget")).intValue(),
