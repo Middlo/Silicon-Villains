@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
@@ -50,9 +51,21 @@ public class JsonIO {
 		projectArrayList = new ArrayList<Project>();
 		ProjectKeys = ProjectJson.keySet();
 		for (String Key : ProjectKeys) {
-			PersonTime[] timesArray;
+			PersonTime[] timesArray = new PersonTime[0];
 			try {
-				timesArray = (PersonTime[])((JSONObject) ProjectJson.get(Key)).get("times");
+				String timesString = (String) ((JSONObject) ProjectJson.get(Key)).get("times");
+				
+				JSONArray timesJson =  (JSONArray) JSONValue.parse(timesString);
+				ArrayList<PersonTime> times = new ArrayList<PersonTime>();
+			 
+				if (timesJson != null) { 
+					   for (int i=0;i<timesJson.size();i++){ 
+					    times.add((PersonTime)timesJson.get(i));
+					   } 
+					} 
+				System.out.println(times);
+				
+				//timesArray = (PersonTime[])((JSONObject) ProjectJson.get(Key)).get("times");
 			}
 			catch(NullPointerException e) {
 				timesArray = new PersonTime[0];
@@ -107,7 +120,6 @@ public class JsonIO {
 		//the ArrayLists times and tasks are converted into simple arrays and stored
 		
 		ArrayList<PersonTime> timesList = p.getTimes();
-		System.out.println(timesList);
 		//PersonTime[] times = (PersonTime[]) timesList.toArray(new PersonTime[timesList.size()]);
 		
 		String times = JSONValue.toJSONString(timesList);
@@ -178,11 +190,17 @@ public class JsonIO {
 	public void updateTimes(String Key, Project p) {
 		JSONObject ProjectObj = ((JSONObject) ProjectJson.get(Key));
 		ArrayList<PersonTime> timesList = p.getTimes();
+		JSONArray js = new JSONArray();
+		if(timesList != null) {
+			for(int i=0;i<timesList.size();i++) {
+				js.add(timesList.get(i));
+			}
+		}
+		String times = js.toJSONString();
 		
-		String times = JSONValue.toJSONString(timesList);
 		
 		ProjectObj.put("times", times);
-		System.out.println("TIMES = "+times);
+		System.out.println("TIMES JSONARRAY = "+times);
 		ProjectJson.put(Key, ProjectObj);
 	}
 }

@@ -293,7 +293,7 @@ public class Main{
 						break;
 					case 4:
 					//PROJECT SCHEDULE
-						System.out.println(foundProject.scheduleActivity());
+						//System.out.println(foundProject.scheduleActivity());
 						break;
 					case 5:
 					//RISK MATRIX
@@ -303,7 +303,7 @@ public class Main{
 						probablity = io.getInteger();
 						System.out.println("Insert impact level:");
 						impact = io.getInteger();
-						System.out.println(foundProject.riskMatrix(riskname, probablity, impact));
+						//System.out.println(foundProject.riskMatrix(riskname, probablity, impact));
 						break;
 					}
 				}while(featuresMenuChoice!=6);
